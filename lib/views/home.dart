@@ -65,37 +65,67 @@ class CategoryTile extends StatelessWidget {
   final categoryName;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(right: 16),
-        child: Stack(
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(6.0),
-              child: Image.network(
-                imageUrl,
-                width: 120.0,
-                height: 60.0,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: 120.0,
-              height: 60.0,
-              decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+          margin: EdgeInsets.only(right: 16),
+          child: Stack(
+            children: <Widget>[
+              ClipRRect(
                 borderRadius: BorderRadius.circular(6.0),
-                color: Colors.black26,
-              ),
-              child: Text(
-                categoryName,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w500,
+                child: Image.network(
+                  imageUrl,
+                  width: 120.0,
+                  height: 60.0,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ],
-        ));
+              Container(
+                alignment: Alignment.center,
+                width: 120.0,
+                height: 60.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6.0),
+                  color: Colors.black26,
+                ),
+                child: Text(
+                  categoryName,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
+  }
+}
+
+class BlogTile extends StatelessWidget {
+  // Default constructor
+  // Dart doesn't support overloaded constructors
+  BlogTile(
+      {@required this.imageUrl,
+      @required this.description,
+      @required this.title});
+  final String imageUrl, description, title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+          ),
+          Text(
+            title,
+            style: TextStyle(),
+          ),
+        ],
+      ),
+    );
   }
 }
